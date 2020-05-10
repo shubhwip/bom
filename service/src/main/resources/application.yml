@@ -1,0 +1,56 @@
+server:
+  port: 8081
+  servlet:
+    contextPath: /bom-api
+  tomcat:
+    accesslog:
+      directory: log
+      enabled: true
+      file-date-format: dd-MM-yyyy
+      pattern: combined
+      prefix: access
+      suffix: .log
+    basedir: .
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:bom
+    username: username
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
+logging:
+  file:
+    name: ./log/app.log
+  level:
+    web: TRACE
+  pattern:
+    console: '%-5p [%d] CorrelationID=%X{Request-Tracker:-NA} %logger: %m%n'
+    file: '%-5p [%d] CorrelationID=%X{Request-Tracker:-NA} %logger: %m%n'
+
+management:
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: ping
+        liveness:
+          include: ping
+  endpoints:
+    web:
+      exposure:
+        include: health
+      base-path: /
+  server:
+    port: 8081
+
+spring.autoconfigure.exclude: org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+
