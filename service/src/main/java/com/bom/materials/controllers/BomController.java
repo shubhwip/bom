@@ -56,4 +56,10 @@ public class BomController {
         bomServiceImpl.updateBom(bom, bomId);
     }
 
+    @GetMapping("/health")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<String> health() {
+        return ResponseEntity.ok().body("Health Ok");
+    }
+
 }
