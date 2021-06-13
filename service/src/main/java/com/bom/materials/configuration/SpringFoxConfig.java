@@ -14,7 +14,7 @@ public class SpringFoxConfig {
     @Bean
     public Docket api() {
         // http://localhost:8081/bom-api/v2/api-docs
-        // http://localhost:8081/bom-api/swagger-ui.htm
+        // http://localhost:8081/bom-api/swagger-ui.html
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())

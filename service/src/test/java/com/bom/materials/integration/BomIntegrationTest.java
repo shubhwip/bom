@@ -20,6 +20,7 @@ public class BomIntegrationTest {
 
     @Test
     public void givenValidBom_createBom_returnsSuccess() {
+        System.out.println(restTemplate.getRootUri());
         final Bom bom = new Bom("dummy-service1", "1.0.0", "production", "khbackhbackbakcbkabc", "Shubham Jain");
         ResponseEntity<Void> rs = restTemplate.postForEntity(
                 String.format("%s", BOM_PATH + "/create"),

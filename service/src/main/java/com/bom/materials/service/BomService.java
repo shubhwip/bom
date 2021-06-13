@@ -16,4 +16,6 @@ public interface BomService {
     BomId findBomByServiceNameAndEnvironment(String service, String environment);
 
     void updateBom(Bom bom, long bomId);
+
+    List<String> findAllEnvironments();
 }

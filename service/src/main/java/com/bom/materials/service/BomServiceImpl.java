@@ -82,4 +82,9 @@ public class BomServiceImpl implements BomService {
                     return bomRepository.save(newBom);
                 });
     }
+
+    @Override
+    public List<String> findAllEnvironments() {
+        return bomRepository.findAllEnvironmentsNative();
+    }
 }
