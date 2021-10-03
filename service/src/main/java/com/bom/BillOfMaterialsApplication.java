@@ -9,4 +9,5 @@ public class BillOfMaterialsApplication {
     public static void main(String[] args) {
         SpringApplication.run(BillOfMaterialsApplication.class, args);
     }
+
 }

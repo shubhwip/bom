@@ -18,6 +18,7 @@ import java.util.List;
 @RequestMapping("/boms")
 @Validated
 @Slf4j
+@CrossOrigin(origins = "http://localhost:3000")
 public class BomController {
 
     @Autowired

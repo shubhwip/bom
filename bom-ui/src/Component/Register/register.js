@@ -12,16 +12,34 @@ export default class Register extends Component {
         })
     }
     submitData = () => {
-        var obj = {
+        const obj = {
             companyName: this.state.cname,
             email: this.state.email,
             maintainer: this.state.maintainer,
             versionControlUrl: this.state.version
         }
-        axios.post('http:localhost:8081/customer/create', obj)
-            .then((data) => {
-                this.props.history.push('/')
-            })
+        console.log(obj);
+
+        axios({
+            method: 'post',
+            url: 'http://localhost:8081/customer/create',
+            data: obj,
+            headers : {
+                    'Content-Type': 'application/json'
+                }
+        })
+
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+        // axios.post('http:localhost:8081/customer/create', obj)
+        //     .then((data) => {
+        //         this.props.history.push('/')
+        //     })
 
     }
     render() {
