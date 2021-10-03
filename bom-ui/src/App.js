@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Bom from './Component/BOM/bom'
+import Register from './Component/Register/register'
+import {Switch, Route} from 'react-router-dom'
 class App extends Component {
 
     state = {};
@@ -8,18 +10,17 @@ class App extends Component {
         // this.dadJokes()
     }
 
-    // dadJokes = () => {
-    //     fetch('/bom-api/boms/health')
-    //         .then(response => response.text())
-    //         .then(message => {
-    //             this.setState({ message: message });
-    //         });
-    // };
-
     render() {
         return (
             <div>
-                <Bom />
+                <Switch>
+                    <Route exact path = "/">
+                        <Bom />
+                    </Route>
+                    <Route exact path = "/register">
+                        <Register />
+                     </Route>
+                </Switch>
             </div>
         );
     }
