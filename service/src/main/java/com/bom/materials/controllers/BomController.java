@@ -37,6 +37,12 @@ public class BomController {
         return ResponseEntity.ok().body(bomServiceImpl.findAllBoms());
     }
 
+    @GetMapping("/bom/{environment}")
+    public ResponseEntity<List<BomResponse>> getBomsPerPage() {
+        log.info("Getting All Bill of Materials");
+        return ResponseEntity.ok().body(bomServiceImpl.findAllBoms());
+    }
+
 
     @GetMapping("/{environment}/all")
     public ResponseEntity<List<BomResponse>> getAllBoms(@PathVariable @Valid String environment) {
