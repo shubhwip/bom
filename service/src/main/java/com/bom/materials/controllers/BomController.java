@@ -18,7 +18,6 @@ import java.util.List;
 @RequestMapping("/boms")
 @Validated
 @Slf4j
-@CrossOrigin(origins = "http://localhost:3000")
 public class BomController {
 
     @Autowired
@@ -35,6 +34,12 @@ public class BomController {
     public ResponseEntity<List<BomResponse>> getAllBoms() {
         log.info("Getting All Bill of Materials");
         return ResponseEntity.ok().body(bomServiceImpl.findAllBoms());
+    }
+
+    @GetMapping("/all/environments")
+    public ResponseEntity<List<String>> getAllEnvironments() {
+        log.info("Getting All Environments");
+        return ResponseEntity.ok().body(bomServiceImpl.findAllEnvironments());
     }
 
     @GetMapping("/bom/{environment}")

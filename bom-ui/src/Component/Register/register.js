@@ -11,7 +11,8 @@ export default class Register extends Component {
             [e.target.name]: e.target.value
         })
     }
-    submitData = () => {
+    submitData = (e) => {
+        e.preventDefault();
         const obj = {
             companyName: this.state.cname,
             email: this.state.email,
@@ -22,7 +23,7 @@ export default class Register extends Component {
 
         axios({
             method: 'post',
-            url: 'http://localhost:8081/customer/create',
+            url: 'http://localhost:8081/bom-api/customer/create',
             data: obj,
             headers : {
                     'Content-Type': 'application/json'
@@ -65,7 +66,7 @@ export default class Register extends Component {
                                     <label for="exampleInputEmail1">Version Control URL</label>
                                     <input type="text" class="form-control mt-1" aria-describedby="emailHelp" name='version' placeholder="Enter Version Control URL" onChange={(e) => this.changeData(e)} />
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3" onClick={() => this.submitData()}>Submit</button>
+                                <button type="submit" class="btn btn-primary mt-3" onClick={(e) => this.submitData(e)}>Submit</button>
                             </form>
                         </div>
 

@@ -16,7 +16,6 @@ import javax.validation.Valid;
 @RequestMapping("/customer")
 @Validated
 @Slf4j
-@CrossOrigin(origins = "http://localhost:3000")
 public class CustomerController {
     @Autowired
     CustomerService customerService;
