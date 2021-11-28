@@ -25,22 +25,19 @@ export default class Register extends Component {
             method: 'post',
             url: 'http://localhost:8081/bom-api/customer/create',
             data: obj,
-            headers : {
-                    'Content-Type': 'application/json'
-                }
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
 
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+            .then(function (response) {
+                console.log(response);
+                this.props.history.push('/')
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
-        // axios.post('http:localhost:8081/customer/create', obj)
-        //     .then((data) => {
-        //         this.props.history.push('/')
-        //     })
 
     }
     render() {
