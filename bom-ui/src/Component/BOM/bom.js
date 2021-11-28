@@ -4,44 +4,21 @@ import Navbar from './Navbar';
 import axios from 'axios';
 
 export default class Bom extends Component {
-    state = {
-        tabs: []
-    }
-    componentDidMount = () => {
-        axios({
-            method: 'get',
-            url: 'http://localhost:8081/bom-api/boms/all/enviornments',
-            headers: {
-                'Content-Type': 'application/json'
-            }
+    state = {envData : []}
+    getEnvData = (data) => {
+    this.setState({
+        envData: data
         })
-
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
     }
     render() {
+        const {envData} = this.state;
         return (
             <div>
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Active</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-                <Navbar />
+                <Navbar
+                getEnvData = {this.getEnvData}
+                //name = "Shubham Jain"
+                />
+
                 <table class="table">
                     <thead>
                         <tr>
@@ -54,22 +31,21 @@ export default class Bom extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>account-security-service</td>
-                            <td>1.10.9</td>
-                            <td>bdab434k34kbkbh3kb4hb1</td>
-                            <td>Rajat Jain</td>
-                            <td>https://bom.jira.net/1123</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>registration-service</td>
-                            <td>1.10.10</td>
-                            <td>bdab4dkscbkjdnckjnk</td>
-                            <td>Shubham Jain</td>
-                            <td>https://bom.jira.net/1125</td>
-                        </tr>
+                        {
+                                    envData !== undefined && envData.map((el,i)=>{
+                                        return (
+                                                                <tr>
+                                                                    <th scope="row">{i+1}</th>
+                                                                    <td>{el.serviceName}</td>
+                                                                    <td>{el.serviceVersion}</td>
+                                                                    <td>{el.versionControlCheckoutHash}</td>
+                                                                    <td>{el.commitAuthor}</td>
+                                                                    <td>https://bom.jira.net/1123</td>
+                                                                </tr>
+                                        )
+                                    })
+                        }
+
                     </tbody>
                 </table>
             </div>

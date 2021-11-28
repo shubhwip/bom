@@ -7,7 +7,7 @@ curl --location --request POST 'http://localhost:8081/bom-api/boms/create' \
 	"serviceVersion":"1.0.1",
 	"environment":"test",
 	"versionControlCheckoutHash":"ckjdncjkndjcndjkcnkjdncjkdn1",
-	"commitAuthor":"Kapil Jain"
+	"commitAuthor":"kapil"
 }'
 
 curl --location --request POST 'http://localhost:8081/bom-api/boms/create' \
